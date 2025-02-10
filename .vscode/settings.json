@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "QuadPaddle.sln"
+    "dotnet.defaultSolution": "paired-prototype-spring-25-tuesday-team-21-quadpaddle.sln"
 }
