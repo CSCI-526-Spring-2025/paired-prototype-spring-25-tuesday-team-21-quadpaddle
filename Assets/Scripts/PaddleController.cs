@@ -36,13 +36,13 @@ public class PaddleController : MonoBehaviour
                 moveDirection = new Vector3(moveAmount, 0, 0);  // 左右移动
                 break;
             case PaddleType.Right:
-                moveDirection = new Vector3(0, -moveAmount, 0);  // 上下移动
+                moveDirection = new Vector3(0, moveAmount, 0);  // 上下移动
                 break;
             case PaddleType.Top:
                 moveDirection = new Vector3(-moveAmount, 0, 0); // 反向左右移动
                 break;
             case PaddleType.Left:
-                moveDirection = new Vector3(0, moveAmount, 0);  // 反向上下移动
+                moveDirection = new Vector3(0, -moveAmount, 0);  // 反向上下移动
                 break;
         }
 
