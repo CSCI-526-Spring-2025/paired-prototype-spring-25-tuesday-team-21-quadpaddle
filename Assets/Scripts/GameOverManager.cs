@@ -7,9 +7,14 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverPanel;  // Drag `GameOverModal` here
     public TextMeshProUGUI timeText;  // Drag `TimeText` from UI here
 
+    void Start()
+    {
+        // Ensure the Game Over panel is hidden at the beginning
+        gameOverPanel.SetActive(false);
+    }
+
     public void ShowGameOver()
     {
-        gameOverPanel.SetActive(true);
 
         // Fetch the final time from TimerManager
         TimerManager timerManager = FindObjectOfType<TimerManager>();
