@@ -6,11 +6,12 @@ public class BallController : MonoBehaviour
     private float maxSpeed = 10f;
     private Rigidbody2D rb;
     private int streakCount = 0;
-    private float minYVelocity = 1.5f;
+    private SpriteRenderer ballSpriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ballSpriteRenderer = GetComponent<SpriteRenderer>();
 
         // Launch ball in a slightly randomized direction
         float randomAngle = Random.Range(0f, 90f);
@@ -22,6 +23,8 @@ public class BallController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Paddle"))
         {
+            ChangeBallColor(collision.gameObject);
+
             // Generate a completely random angle (0 to 360 degrees)
             float randomAngle = Random.Range(0f, 360f);
             Vector2 newDirection = new Vector2(
@@ -50,6 +53,16 @@ public class BallController : MonoBehaviour
         else
         {
             GameOver();
+        }
+    }
+
+    private void ChangeBallColor(GameObject paddle)
+    {
+        SpriteRenderer paddleRenderer = paddle.GetComponent<SpriteRenderer>();
+
+        if (paddleRenderer != null && ballSpriteRenderer != null)
+        {
+            ballSpriteRenderer.color = paddleRenderer.color;
         }
     }
 
