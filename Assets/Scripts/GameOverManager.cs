@@ -4,11 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject gameOverPanel;  // Drag `GameOverModal` here
-    public TextMeshProUGUI timeText;  // Drag `TimeText` from UI here
-
+    public GameObject gameOverPanel;  
+    public TextMeshProUGUI timeText; 
+    public GameObject obstacleSpawner; 
     public void ShowGameOver()
     {
+        if (obstacleSpawner != null) obstacleSpawner.SetActive(false);
+        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        foreach (GameObject obstacle in obstacles)
+        {
+            Destroy(obstacle);
+        }
+
         gameOverPanel.SetActive(true);
         // Fetch the final time from TimerManager
         TimerManager timerManager = FindObjectOfType<TimerManager>();

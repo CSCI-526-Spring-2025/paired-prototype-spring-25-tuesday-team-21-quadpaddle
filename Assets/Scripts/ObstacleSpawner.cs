@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab; // Prefab
-    public float spawnInterval = 2f; // Generate interval（second）
+    public float spawnInterval = 5f; // Generate interval（second）
     public float minX = -6f, maxX = 6f, minY = -3f, maxY = 3f; // Generate area
 
     void Start()
@@ -21,6 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
+
     void SpawnObstacle()
     {
         if (obstaclePrefab == null)
@@ -34,12 +35,16 @@ public class ObstacleSpawner : MonoBehaviour
         float randomY = Random.Range(minY, maxY);
         Vector2 spawnPosition = new Vector2(randomX, randomY);
 
+        // Random rotation (0° to 360°)
+        float randomRotation = Random.Range(0f, 360f);
+        Quaternion spawnRotation = Quaternion.Euler(0, 0, randomRotation);
+
         // Generate obstacle
         //Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
 
-        GameObject newObstacle = Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
+        GameObject newObstacle = Instantiate(obstaclePrefab, spawnPosition, spawnRotation);
 
-        // Destroy the obstacle after 3 seconds
-        Destroy(newObstacle, 3f);
+        // Destroy the obstacle after 5 seconds
+        Destroy(newObstacle, 5f);
     }
 }

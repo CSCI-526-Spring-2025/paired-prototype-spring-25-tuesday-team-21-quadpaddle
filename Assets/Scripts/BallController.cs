@@ -21,7 +21,7 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Paddle"))
+        if (collision.gameObject.CompareTag("Paddle") || collision.gameObject.CompareTag("Obstacle"))
         {
             ChangeBallColor(collision.gameObject);
 
