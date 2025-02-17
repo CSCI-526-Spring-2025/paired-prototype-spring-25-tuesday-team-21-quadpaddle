@@ -7,6 +7,7 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverPanel;  
     public TextMeshProUGUI timeText; 
     public GameObject obstacleSpawner; 
+
     public void ShowGameOver()
     {
         if (obstacleSpawner != null) obstacleSpawner.SetActive(false);
@@ -21,8 +22,12 @@ public class GameOverManager : MonoBehaviour
         TimerManager timerManager = FindObjectOfType<TimerManager>();
         if (timerManager != null)
         {
-            timeText.text = "Time Taken: " + timerManager.GetFinalTime();
+            float finalTime = timerManager.GetFinalTime();
+            // Round the final time to integer
+            int score = Mathf.RoundToInt(finalTime * 100 / 100f) * 100;
+            timeText.text = "Score: " + score.ToString();
         }
+
 
         Time.timeScale = 0; // Pause the game
     }
