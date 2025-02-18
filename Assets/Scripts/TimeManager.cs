@@ -1,9 +1,9 @@
 using UnityEngine;
-using TMPro;  // For TextMeshPro
+using TMPro;
 
 public class TimerManager : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;  // Drag TimerText from the UI
+    public TextMeshProUGUI timerText;  
     private float elapsedTime = 0f;
     private bool isGameOver = false;
     private string finalTime;
@@ -31,6 +31,6 @@ public class TimerManager : MonoBehaviour
 
     public void StopTimer()
     {
-        isGameOver = true;  // Stops the timer when game over
+        isGameOver = true; 
     }
 }

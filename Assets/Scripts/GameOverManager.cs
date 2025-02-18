@@ -18,25 +18,23 @@ public class GameOverManager : MonoBehaviour
         }
 
         gameOverPanel.SetActive(true);
-        // Fetch the final time from TimerManager
         TimerManager timerManager = FindObjectOfType<TimerManager>();
         if (timerManager != null)
         {
             float finalTime = timerManager.GetFinalTime();
-            // Round the final time to integer
             int score = Mathf.RoundToInt(finalTime * 100 / 100f) * 100;
             timeText.text = "Score: " + score.ToString();
         }
 
 
-        Time.timeScale = 0; // Pause the game
+        Time.timeScale = 0; 
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1; // Resume game speed
-        gameOverPanel.SetActive(false); // Hide the Game Over modal
+        Time.timeScale = 1; 
+        gameOverPanel.SetActive(false); 
         Debug.Log("Restarting Game...");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

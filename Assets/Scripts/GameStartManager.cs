@@ -8,20 +8,18 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0; // Pause the game initially
-        startMenuPanel.SetActive(true); // Show start modal
+        Time.timeScale = 0;
+        startMenuPanel.SetActive(true);
 
-        // Hide ball and obstacles at the start
         if (ball != null) ball.SetActive(false);
         if (obstacleSpawner != null) obstacleSpawner.SetActive(false);
     }
 
     public void StartGame()
     {
-        startMenuPanel.SetActive(false); // Hide modal
-        Time.timeScale = 1; // Resume game
+        startMenuPanel.SetActive(false); 
+        Time.timeScale = 1; 
 
-        // Show ball and obstacles when the game starts
         if (ball != null) ball.SetActive(true);
         if (obstacleSpawner != null) obstacleSpawner.SetActive(true);
     }

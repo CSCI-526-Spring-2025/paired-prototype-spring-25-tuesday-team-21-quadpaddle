@@ -13,7 +13,6 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ballSpriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Launch ball in a slightly randomized direction
         float randomAngle = Random.Range(0f, 90f);
         Vector2 initialDirection = Quaternion.Euler(0, 0, randomAngle) * Vector2.up;
         rb.velocity = initialDirection * speed;
@@ -25,15 +24,13 @@ public class BallController : MonoBehaviour
         {
             ChangeBallColor(collision.gameObject);
 
-            // Generate a completely random angle (0 to 360 degrees)
             float randomAngle = Random.Range(0f, 360f);
             Vector2 newDirection = new Vector2(
                 Mathf.Cos(randomAngle * Mathf.Deg2Rad),
                 Mathf.Sin(randomAngle * Mathf.Deg2Rad)
             ).normalized;
 
-            // Ensure a minimum vertical speed to avoid near-horizontal movement
-            if (Mathf.Abs(newDirection.y) < 0.3f) // adjust threshold as needed
+            if (Mathf.Abs(newDirection.y) < 0.3f) 
             {
                 newDirection.y = newDirection.y >= 0 ? 0.3f : -0.3f;
                 newDirection = newDirection.normalized;
@@ -42,7 +39,6 @@ public class BallController : MonoBehaviour
             rb.velocity = newDirection * speed;
             streakCount++;
 
-            // Increase speed every 5 streaks, but cap at maxSpeed
             if (streakCount % 5 == 0 && speed < maxSpeed)
             {
                 speed += 0.5f;

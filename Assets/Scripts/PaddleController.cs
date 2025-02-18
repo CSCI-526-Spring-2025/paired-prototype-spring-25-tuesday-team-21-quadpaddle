@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
-    public enum PaddleType { Bottom, Right, Top, Left }  // Paddle 类型枚举
+    public enum PaddleType { Bottom, Right, Top, Left } 
     public PaddleType paddleType;
 
-    public float moveSpeed = 5f;  // Paddle 移动速度
+    public float moveSpeed = 5f; 
 
     private Vector3 moveDirection;
 
@@ -33,19 +33,19 @@ public class PaddleController : MonoBehaviour
         switch (paddleType)
         {
             case PaddleType.Bottom:
-                moveDirection = new Vector3(moveAmount, 0, 0);  // 左右移动
+                moveDirection = new Vector3(moveAmount, 0, 0);  
                 break;
             case PaddleType.Right:
-                moveDirection = new Vector3(0, -moveAmount, 0);  // 上下移动
+                moveDirection = new Vector3(0, -moveAmount, 0);  
                 break;
             case PaddleType.Top:
-                moveDirection = new Vector3(-moveAmount, 0, 0); // 反向左右移动
+                moveDirection = new Vector3(-moveAmount, 0, 0); 
                 break;
             case PaddleType.Left:
-                moveDirection = new Vector3(0, moveAmount, 0);  // 反向上下移动
+                moveDirection = new Vector3(0, moveAmount, 0); 
                 break;
         }
 
-        transform.position += moveDirection;  // 应用移动
+        transform.position += moveDirection; 
     }
 }
